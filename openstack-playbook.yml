@@ -28,6 +28,11 @@
       pip:
         name: kolla-ansible
         virtualenv: /home/vagrant/openstack-env
+    - name: Install openstack-client
+      pip:
+        name: python-openstackclient
+        virtualenv: /home/vagrant/openstack-env
+
     - name: Create directory
       become_method: sudo
       file:
@@ -56,5 +61,10 @@
         src: /home/vagrant/openstack-env/share/kolla-ansible/ansible/inventory/all-in-one
         dest: /home/vagrant/all-in-one
         remote_src: yes        
-    
-
+    - name: Copy openstack.sh to /home/vagrant
+      copy:
+        src: openstack.sh
+        dest: /home/vagrant/openstack.sh
+    - name: User right on openstack.sh
+      become_method: sudo
+      shell: sudo chown vagrant:vagrant /home/vagrant/openstack.sh
