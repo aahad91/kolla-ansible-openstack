@@ -59,5 +59,4 @@ chmod +x openstack.sh
 cat /etc/kolla/admin-openrc.sh
 ```
 
-------
-
+![dashboard](images/os-dashboard.png)
