@@ -13,6 +13,9 @@ Openstack deployment all-in-one using Vagrant and Ansible
 ```bash
 git clone https://github.com/aahad91/kolla-ansible-openstack.git
 cd kolla-ansible-openstack
+
+# modify the network interfaces in Vagrantfile based on your machine, define two networks.
+
 vagrant up
 # and wait for the vagrant command to execute successfully
 vagrant ssh openstack
@@ -42,21 +45,9 @@ vagrant provision
 ```bash
 vagrant ssh openstack
 
-source openstack-env/bin/activate
+chmod +x openstack.sh
 
-kolla-genpwd
-
-#below commands will take time based on the resources allocated to the VM in Vagrantfile
-kolla-ansible -i all-in-one bootstrap-servers -vvvv
-
-kolla-ansible -i all-in-one prechecks -vvvv
-
-kolla-ansible -i all-in-one deploy -vvvv
-
-kolla-ansible -i all-in-one post-deploy -vvvv
-
-. /etc/kolla/admin-openrc.sh
-. openstack-envshare/kolla-ansible/init-runonce
+./openstack.sh
 ```
 
 ### OpenStack Dashboard

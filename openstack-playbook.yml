@@ -32,7 +32,6 @@
       pip:
         name: python-openstackclient
         virtualenv: /home/vagrant/openstack-env
-
     - name: Create directory
       become_method: sudo
       file:
